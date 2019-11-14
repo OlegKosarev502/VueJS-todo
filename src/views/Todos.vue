@@ -3,7 +3,6 @@
     <TodoList 
       v-bind:todos="todos"
     />
-    <router-link to="/">Home</router-link>
   </div>
 </template>
 
