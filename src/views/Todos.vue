@@ -1,6 +1,8 @@
 <template>
-  <div id="app">
-    <TodoList 
+  <div class="todos-container">
+    <Loader v-if="isLoading" />
+    <TodoList
+      v-else
       v-bind:todos="todos"
     />
   </div>
@@ -8,21 +10,39 @@
 
 <script>
 import TodoList from '../components/TodoList';
+import Loader from '../components/Loader';
 
 export default {
-  name: 'app',
+  name: 'todos-container',
   data() {
     return {
-      todos: []
+      todos: [],
+      isLoading: true
     }
   },
   mounted() {
     fetch('https://jsonplaceholder.typicode.com/todos?_limit=5')
       .then(response => response.json())
-      .then(json => { this.todos = json });
+      .then(json => {
+        setTimeout(() => {
+          this.todos = json;
+          this.isLoading = false;
+        }, 10000);
+      });
   },
   components: {
-    TodoList
+    TodoList,
+    Loader
   }
 }
 </script>
+
+<style scoped>
+  .todos-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+</style>
