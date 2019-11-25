@@ -1,3 +1,7 @@
 <template>
-  <div>Page not found</div>
+  <div>Sorry, page not found :(</div>
 </template>
+
+<style scoped>
+
+</style>

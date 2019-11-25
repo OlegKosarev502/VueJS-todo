@@ -1,12 +1,13 @@
 <template>
   <div class="todos">
-    <ul class="todos-list">
+    <div class="todos-list">
       <TodoItem 
         v-for="todo in todos" 
         v-bind:todo="todo" 
-        v-bind:key="todo.key" 
+        v-bind:key="todo.key"
+        v-on:remove-todo="removeTodo"
       />
-    </ul>
+    </div>
   </div>
 </template>
 
@@ -17,6 +18,11 @@ export default {
   props: ["todos"],
   components: {
     TodoItem
+  },
+  methods: {
+    removeTodo(id) {
+      this.$emit('remove-todo', id);
+    }
   }
 };
 </script>
@@ -25,10 +31,5 @@ export default {
 .todos {
   box-sizing: border-box;
   padding: 40px 20px;
-}
-.todos-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
 }
 </style>

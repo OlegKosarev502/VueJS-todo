@@ -14,6 +14,10 @@ export default new Router({
     {
       path: '/todos',
       component: () => import('./views/Todos')
+    },
+    {
+      path: '*',
+      component: () => import('./views/NotFound')
     }
   ]
 });

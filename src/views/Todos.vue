@@ -4,6 +4,7 @@
     <TodoList 
       v-else 
       v-bind:todos="todos" 
+      v-on:remove-todo="removeTodo"
     />
   </div>
 </template>
@@ -36,6 +37,13 @@ export default {
   components: {
     TodoList,
     Loader
+  },
+  methods: {
+    removeTodo(id) {
+      this.todos = this.todos.filter(todo => {
+        return todo.id !== id;
+      });
+    }
   }
 };
 </script>
