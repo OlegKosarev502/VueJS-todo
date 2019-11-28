@@ -28,8 +28,4 @@ export default {
 </script>
 
 <style scoped>
-.todos {
-  box-sizing: border-box;
-  padding: 40px 20px;
-}
 </style>
