@@ -1,17 +1,19 @@
 <template>
   <div id="app">
     <div class="app-nav">
-      <div class="nav-item">
-        <router-link to="/">Home</router-link>
+      <div class="nav-item active-item">
+        <router-link class="nav-link" to="/">Home</router-link>
       </div>
       <div class="nav-item">
-        <router-link to="/todos">Todos</router-link>
+        <router-link class="nav-link" to="/todos">Todos</router-link>
       </div>
     </div>
+
     <div class="app-main">
       <div class="app-header">
         <h1>Todo application</h1>
       </div>
+
       <div class="app-views">
         <router-view />
       </div>
@@ -19,21 +21,21 @@
   </div>
 </template>
 
-<style>
-@import url("https://fonts.googleapis.com/css?family=Amatic+SC|Crimson+Text&display=swap");
+<script>
 
+</script>
+
+<style>
 body {
   padding: 0;
   margin: 0;
   min-height: 100vh;
-  font-family: "Crimson Text", serif;
 }
 
 #app {
   display: flex;
   align-items: stretch;
   min-height: 100vh;
-  background-color: #faf9f8;
 }
 
 .app-nav {
@@ -42,20 +44,27 @@ body {
 
 .nav-item {
   height: 40px;
-  text-align: center;
+  margin: 5px 15px;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
 }
 
-.nav-item:hover {
+.active-item {
   background-color: #3f4d71;
 }
-
-.nav-item a {
-  font-size: 24px;
-  color: #3f4d71;
+.active-item .nav-link {
+  color: white;
 }
 
-.nav-item:hover a {
-  color: #fff;
+.nav-link {
+  width: 100%;
+  height: 30px;
+  font-size: 20px;
+  line-height: 30px;
+  color: #3f4d71;
+  text-decoration: none;
 }
 
 .app-main {
@@ -68,13 +77,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 15vh;
+  height: 50px;
   background-color: #55ae95;
 }
 
 .app-header h1 {
   margin: 0;
-  font-size: 48px;
   color: #fff;
 }
 </style>
