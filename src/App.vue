@@ -1,10 +1,18 @@
 <template>
   <div id="app">
     <div class="app-nav">
-      <div class="nav-item active-item">
+      <div 
+        class="nav-item"
+        v-bind:class="{ 'active-nav-item' : currentPage === 'home' }"
+        v-on:click="toggleActive('home')"
+      >
         <router-link class="nav-link" to="/">Home</router-link>
       </div>
-      <div class="nav-item">
+      <div
+        class="nav-item"
+        v-bind:class="{ 'active-nav-item' : currentPage === 'todos' }"
+        v-on:click="toggleActive('todos')"
+      >
         <router-link class="nav-link" to="/todos">Todos</router-link>
       </div>
     </div>
@@ -22,7 +30,18 @@
 </template>
 
 <script>
-
+export default {
+  data() {
+    return {
+      currentPage: 'home'
+    }
+  },
+  methods: {
+    toggleActive(page) {
+      this.currentPage = page
+    }
+  }
+}
 </script>
 
 <style>
@@ -45,24 +64,29 @@ body {
 .nav-item {
   height: 40px;
   margin: 5px 15px;
-  padding-left: 10px;
   display: flex;
   align-items: center;
   border-radius: 5px;
 }
 
-.active-item {
+.nav-item:hover .nav-link {
+  color: #55ae95;
+}
+
+.active-nav-item {
   background-color: #3f4d71;
 }
-.active-item .nav-link {
+.active-nav-item .nav-link,
+.active-nav-item:hover .nav-link {
   color: white;
 }
 
 .nav-link {
   width: 100%;
-  height: 30px;
+  height: 100%;
+  padding-left: 10px;
   font-size: 20px;
-  line-height: 30px;
+  line-height: 40px;
   color: #3f4d71;
   text-decoration: none;
 }
